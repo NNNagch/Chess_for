@@ -17,8 +17,8 @@ io.on('connection', (socket) => {
 
   // 手番を送受信
   socket.on('move', (data) => {
-    // 相手に送信
-    socket.broadcast.emit('move', data);
+    // すべてのクライアントに送信（自分も含む）
+    io.emit('move', data);
   });
 
   // 切断時
